@@ -39,8 +39,6 @@ public class Bounce : MonoBehaviour
             newDirection = Vector3.Reflect(direction.normalized, collision.contacts[0].normal);
 
             rb.velocity = newDirection * Mathf.Max(speed, minSpeed);
-
-            Debug.Log(speed);
         }
         
     }

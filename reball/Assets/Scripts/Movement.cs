@@ -6,10 +6,10 @@ public class Movement : MonoBehaviour
 {
     
     float horizontalMovement = 0;
-    float speed = 3;
+    public float speed = 3;
 
     Rigidbody rb;
-    // Start is called before the first frame update
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -18,15 +18,20 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalMovement = Input.GetAxisRaw("Horizontal");
+        horizontalMovement = Input.GetAxis("Horizontal");
 
-        //rb.AddForce(horizontalMovement, 0, 0, ForceMode.Impulse);
-
-        //rb.velocity += new Vector3(horizontalMovement, 0, 0) * speed * Time.deltaTime;
+        
     }
 
     private void FixedUpdate()
     {
-        rb.velocity += new Vector3(horizontalMovement, 0, 0) * speed;
+
+        if(horizontalMovement > 0.1 || horizontalMovement < -0.1)
+        {
+            
+
+            rb.velocity += new Vector3(horizontalMovement * speed, 0, 0);
+        }
+        
     }
 }
