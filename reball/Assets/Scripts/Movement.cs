@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
     {
         horizontalMovement = Input.GetAxis("Horizontal");
         fire = Input.GetAxis("Fire1");
-        Debug.Log(fire + "speeding");
+        
 
     }
 
@@ -35,13 +35,13 @@ public class Movement : MonoBehaviour
         {
             if (fire < 0.1)
             {
-                Vector3 targetVelocity = new Vector3(horizontalMovement * speed, 0, 0);
+                Vector3 targetVelocity = new(horizontalMovement * speed, 0, 0);
 
                 rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
             } else if (fire > 0.1)
             {
-                Vector3 targetVelocity = new Vector3(horizontalMovement * increasedSpeed, 0, 0);
+                Vector3 targetVelocity = new(horizontalMovement * increasedSpeed, 0, 0);
 
                 rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
             }
